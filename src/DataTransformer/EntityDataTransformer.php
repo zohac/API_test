@@ -9,7 +9,6 @@ class EntityDataTransformer implements DataTransformerInterface
 {
     /**
      * {@inheritdoc}
-     *
      */
     public function transform($object, string $to, array $context = [])
     {
@@ -23,6 +22,7 @@ class EntityDataTransformer implements DataTransformerInterface
     public function supportsTransformation($data, string $to, array $context = []): bool
     {
         return false;
-        return $to === Entity::class;
+
+        return Entity::class === $to;
     }
 }
