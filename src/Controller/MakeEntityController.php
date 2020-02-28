@@ -2,18 +2,16 @@
 
 namespace App\Controller;
 
-use App\Dto\EntityDto;
-use phpDocumentor\Reflection\DocBlock\Serializer;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Exception\MakeEntityException;
+use App\Service\MakeEntityService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * Class MakeEntityController.
  */
-class MakeEntityController extends AbstractController
+class MakeEntityController extends DefaultController
 {
     /**
      * @Route(
@@ -22,20 +20,17 @@ class MakeEntityController extends AbstractController
      *     methods={"POST"}
      * )
      *
-     * @param Request             $request
-     * @param SerializerInterface $serializer
+     * @param Request           $request
+     * @param MakeEntityService $entityService
      *
      * @return JsonResponse
+     *
+     * @throws MakeEntityException
      */
-    public function makeEntity(Request $request, SerializerInterface $serializer): JsonResponse
+    public function makeEntity(Request $request, MakeEntityService $entityService): JsonResponse
     {
-        $entityDto = null;
-        $data = $request->getContent();
+        $entityDto = $entityService->transform($request->getContent());
 
-        if ($data) {
-            $entityDto = $serializer->deserialize($data, EntityDto::class, 'json');
-        }
-
-        return $this->json($entityDto);
+        return $this->jsonLd($entityDto);
     }
 }
