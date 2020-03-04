@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -23,7 +22,6 @@ class Entity
     private $namespace;
 
     /**
-     *
      * @ApiProperty(identifier=true)
      *
      * @Assert\NotBlank
@@ -32,7 +30,6 @@ class Entity
     private $name;
 
     /**
-     *
      * @Assert\Type("boolean")
      */
     private $apiResource = false;
