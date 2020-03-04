@@ -9,23 +9,20 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- *      collectionOperations={
+ *     collectionOperations={
  *          "post"={
- *              "method"="POST"
+ *              "method"="POST",
+ *              "path"="/entity/make"
  *          }
- *      },
- *     itemOperations={}
+ *     },
+ *     itemOperations={"get"}
  * )
  */
 class Entity
 {
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $namespace;
 
     /**
-     * @ORM\Column(type="string", length=255)
      *
      * @ApiProperty(identifier=true)
      *
@@ -35,7 +32,6 @@ class Entity
     private $name;
 
     /**
-     * @ORM\Column(type="boolean")
      *
      * @Assert\Type("boolean")
      */
