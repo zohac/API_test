@@ -1,0 +1,29 @@
+Un super test!!
+{#<?php
+
+namespace {{ entity.namespace }}
+
+{% if entity.api_resource %}
+use ApiPlatform\Core\Annotation\ApiResource;
+{% endif %}
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+{% if entity.api_resource %} * @ApiResource(){% endif %}
+ * @ORM\Entity(repositoryClass="{{ entity.repositoryFullClassName }}")
+ */
+class {{ entity.className }}
+{
+    /**
+    * @ORM\Id()
+    * @ORM\GeneratedValue()
+    * @ORM\Column(type="integer")
+    */
+    private $id;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+}#}

@@ -1,0 +1,15 @@
+{
+  "name": "zohac/entity-maker-bundle",
+  "description": "A symfony bundle that allows building entities per json file.",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Simon Jouan",
+      "email": "simon@jouan.ovh"
+    }
+  ],
+  "require": {
+    "php": "^7.2.5"
+  }
+}

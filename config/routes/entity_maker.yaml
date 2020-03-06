@@ -1,0 +1,3 @@
+entity_maker:
+  # loads routes from the YAML, XML or PHP files found in some bundle directory
+  resource: '@EntityMakerBundle/Resources/config/routes.yaml'
