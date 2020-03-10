@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\EntityMakerBundle\Service;
-
 
 use Symfony\Component\Filesystem\Filesystem;
 
