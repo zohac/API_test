@@ -14,12 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *              "path"="/entity/make"
  *          }
  *     },
- *     itemOperations={
- *          "get"={
- *              "method"="GET",
- *              "path"="/entity/make/{name}"
- *          }
- *     }
+ *     itemOperations={"get"}
  * )
  */
 class Entity
@@ -37,12 +32,7 @@ class Entity
     /**
      * @Assert\Type("boolean")
      */
-    private $apiResource;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    private $apiResource = false;
 
     public function getNamespace(): ?string
     {

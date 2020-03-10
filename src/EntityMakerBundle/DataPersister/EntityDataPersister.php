@@ -4,18 +4,20 @@ namespace App\EntityMakerBundle\DataPersister;
 
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use App\EntityBundle\Entity\Entity;
+use App\EntityMakerBundle\EntityService;
+use Twig\Environment;
 
 class EntityDataPersister implements ContextAwareDataPersisterInterface
 {
-//    /**
-//     * @var EntityService
-//     */
-//    private $entityService;
-//
-//    public function __construct(EntityService $entityService)
-//    {
-//        $this->entityService = $entityService;
-//    }
+    /**
+     * @var EntityService
+     */
+    private $entityService;
+
+    public function __construct(EntityService $entityService)
+    {
+        $this->entityService = $entityService;
+    }
 
     public function supports($data, array $context = []): bool
     {
@@ -25,9 +27,10 @@ class EntityDataPersister implements ContextAwareDataPersisterInterface
     public function persist($data, array $context = [])
     {
         // call your persistence layer to save $data
-//        dump($data);
+        dump($data);
 
-        return $data;
+
+//        return $data;
     }
 
     public function remove($data, array $context = [])
