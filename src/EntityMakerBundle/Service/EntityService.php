@@ -3,6 +3,9 @@
 namespace App\EntityMakerBundle\Service;
 
 use App\EntityBundle\Entity\Entity;
+use App\EntityMakerBundle\Event\PostMakeEntityEvent;
+use App\EntityMakerBundle\Event\PreMakeEntityEvent;
+use App\EntityMakerBundle\Exception\MakeEntityException;
 
 class EntityService extends DefaultService
 {
@@ -23,14 +26,15 @@ class EntityService extends DefaultService
     }
 
     /**
-     * @param Entity $data
+     * @param Entity $entity
      *
      * @return $this
      */
-    public function dispatchPreEvent(Entity $data): self
+    public function dispatchPreEvent(Entity $entity): self
     {
+        /** @var PreMakeEntityEvent $event */
         $event = $this->getEvent(PreMakeEntityEvent::NAME);
-        $event->setData($data);
+        $event->setEntity($entity);
 
         $this->getEventDispatcher()->dispatch($event, PreMakeEntityEvent::NAME);
 
@@ -44,8 +48,9 @@ class EntityService extends DefaultService
      */
     public function dispatchPostEvent(Entity $entity): self
     {
+        /** @var PostMakeEntityEvent $event */
         $event = $this->getEvent(PostMakeEntityEvent::NAME);
-        $event->setEntityDto($entity);
+        $event->setEntity($entity);
 
         $this->getEventDispatcher()->dispatch($event, PostMakeEntityEvent::NAME);
 

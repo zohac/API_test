@@ -2,8 +2,8 @@
 
 namespace App\EntityMakerBundle\Service;
 
-use App\Event\PostMakeEntityEvent;
-use App\Event\PreMakeEntityEvent;
+use App\EntityMakerBundle\Event\PostMakeEntityEvent;
+use App\EntityMakerBundle\Event\PreMakeEntityEvent;
 
 class EventService
 {
