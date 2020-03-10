@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  *     itemOperations={
  *          "get"={
-"method"="GET",
+ *              "method"="GET",
  *              "path"="/entity/make/{name}"
  *          }
  *     }
