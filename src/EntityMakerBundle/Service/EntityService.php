@@ -24,6 +24,7 @@ class EntityService extends DefaultService
 
     /**
      * @param Entity $data
+     *
      * @return $this
      */
     public function dispatchPreEvent(Entity $data): self
@@ -38,6 +39,7 @@ class EntityService extends DefaultService
 
     /**
      * @param Entity $entity
+     *
      * @return $this
      */
     public function dispatchPostEvent(Entity $entity): self

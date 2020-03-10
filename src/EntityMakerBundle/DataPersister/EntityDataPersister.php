@@ -5,7 +5,6 @@ namespace App\EntityMakerBundle\DataPersister;
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use App\EntityBundle\Entity\Entity;
 use App\EntityMakerBundle\EntityService;
-use Twig\Environment;
 
 class EntityDataPersister implements ContextAwareDataPersisterInterface
 {
@@ -28,7 +27,6 @@ class EntityDataPersister implements ContextAwareDataPersisterInterface
     {
         // call your persistence layer to save $data
         dump($data);
-
 
 //        return $data;
     }
