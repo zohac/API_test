@@ -15,6 +15,6 @@ class EntityMakerController extends AbstractController
      */
     public function test()
     {
-        return $this->render('@EntityMaker/test.html.twig');
+        return $this->render('@EntityMaker/test/test.html.twig');
     }
 }
