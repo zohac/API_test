@@ -4,7 +4,7 @@ namespace App\EntityMakerBundle\DataPersister;
 
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use App\EntityBundle\Entity\Entity;
-use App\EntityMakerBundle\EntityService;
+use App\EntityMakerBundle\Service\EntityService;
 
 class EntityDataPersister implements ContextAwareDataPersisterInterface
 {
@@ -25,10 +25,10 @@ class EntityDataPersister implements ContextAwareDataPersisterInterface
 
     public function persist($data, array $context = [])
     {
-        // call your persistence layer to save $data
-        dump($data);
+        /** @var Entity $entity */
+        $entity = $this->entityService->persist($data, $context);
 
-//        return $data;
+        return $entity;
     }
 
     public function remove($data, array $context = [])

@@ -12,6 +12,11 @@ class PostMakeEntityEvent extends Event
      */
     private $entity;
 
+    /**
+     * @var array
+     */
+    private $context;
+
     public const NAME = 'post.make.entity';
 
     /**
@@ -28,5 +33,21 @@ class PostMakeEntityEvent extends Event
     public function setEntity(Entity $entity): void
     {
         $this->entity = $entity;
+    }
+
+    /**
+     * @return array
+     */
+    public function getContext(): array
+    {
+        return $this->context;
+    }
+
+    /**
+     * @param array $context
+     */
+    public function setContext(array $context): void
+    {
+        $this->context = $context;
     }
 }

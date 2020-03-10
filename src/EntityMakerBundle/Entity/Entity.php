@@ -19,6 +19,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Entity
 {
+    const DEFAULT_NAMESPACE = 'App\Entity';
+
+    /*
+     * TODO: Regex pour un namespace
+     */
     private $namespace;
 
     /**
@@ -27,7 +32,7 @@ class Entity
      * @Assert\NotBlank
      * @Assert\NotNull
      */
-    private $name;
+    private $className;
 
     /**
      * @Assert\Type("boolean")
@@ -46,14 +51,14 @@ class Entity
         return $this;
     }
 
-    public function getName(): ?string
+    public function getClassName(): ?string
     {
-        return $this->name;
+        return $this->className;
     }
 
-    public function setName(string $name): self
+    public function setClassName(string $className): self
     {
-        $this->name = $name;
+        $this->className = $className;
 
         return $this;
     }

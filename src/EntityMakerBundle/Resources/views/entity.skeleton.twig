@@ -2,15 +2,15 @@
 
 namespace {{ entity.namespace }}
 
-{% if entity.api_resource %}
+{% if entity.apiResource %}
 use ApiPlatform\Core\Annotation\ApiResource;
 {% endif %}
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-{% if entity.api_resource %} * @ApiResource(){% endif %}
- * @ORM\Entity(repositoryClass="{{ entity.repositoryFullClassName }}")
+{% if entity.apiResource %} * @ApiResource(){% endif %}
+ * @ORM\Entity(repositoryClass="{{ repositoryFullClassName }}")
  */
 class {{ entity.className }}
 {
