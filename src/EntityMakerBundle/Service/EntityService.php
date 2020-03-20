@@ -26,12 +26,13 @@ class EntityService extends DefaultService
     {
         $this->dispatchPreEvent($entity, $context);
 
-        $repositoryFullClassName = ucfirst($entity->getClassName()).'Repository.php';
-        // Avec le FileSystemService, écrire l'entité
-        $content = $this->render('@EntityMaker/entity.skeleton.twig', [
-            'entity' => $entity,
-            'repositoryFullClassName' => $repositoryFullClassName,
-        ]);
+        // TODO: Vérifier si l'entité existe ou non
+        // Si elle n'existe pas, la créer
+        $this->createNewEntity($entity);
+        $this->createNewRepository($entity);
+
+        // Si elle existe, la mettre à jour
+        // $this->updateEntity($entity)
 
         $this->dispatchPostEvent($entity, $context);
 
@@ -72,6 +73,37 @@ class EntityService extends DefaultService
         $this->getEventDispatcher()->dispatch($event, PostMakeEntityEvent::NAME);
 
         return $this;
+    }
+
+    /**
+     * @param Entity $entity
+     *
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function createNewEntity(Entity $entity)
+    {
+        $repositoryFullClassName = ucfirst($entity->getClassName()).'Repository.php';
+        // Avec le FileSystemService, écrire l'entité
+        $content = $this->render('@EntityMaker/entity.skeleton.twig', [
+            'entity' => $entity,
+            'repositoryFullClassName' => $repositoryFullClassName,
+        ]);
+
+        $this->getFilesystem()->createNewEntity($entity, $content);
+    }
+
+    public function createNewRepository(Entity $entity)
+    {
+//        $repositoryFullClassName = ucfirst($entity->getClassName()).'Repository.php';
+//        // Avec le FileSystemService, écrire l'entité
+//        $content = $this->render('@EntityMaker/entity.skeleton.twig', [
+//            'entity' => $entity,
+//            'repositoryFullClassName' => $repositoryFullClassName,
+//        ]);
+//
+//        $this->getFilesystem()->createNewEntity($entity, $content);
     }
 
     /**
